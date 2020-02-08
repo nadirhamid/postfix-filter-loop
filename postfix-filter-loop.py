@@ -60,7 +60,7 @@ class CustomSMTPServer(smtpd.SMTPServer):
 			print('Exception SMTPSenderRefused')
 			pass		
 		except smtplib.SMTPRecipientsRefused:
-			print()'Exception SMTPRecipientsRefused')
+			print('Exception SMTPRecipientsRefused')
 			pass		
 		except smtplib.SMTPDataError:
 			print('Exception SMTPDataError')
