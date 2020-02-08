@@ -11,8 +11,10 @@ import traceback
 
 class CustomSMTPServer(smtpd.SMTPServer):
 
-	def process_message(self, peer, mailfrom, rcpttos, data):
-		
+	def process_message(self, peer, mailfrom, rcpttos, data, mail_options=None,
+					rcpt_options=None):
+
+
 		mailfrom.replace('\'', '')
 		mailfrom.replace('\"', '')
 		
@@ -37,8 +39,8 @@ class CustomSMTPServer(smtpd.SMTPServer):
 			pass
 		except:
 			pass
-			print 'Something went south'
-			print traceback.format_exc()
+			print('Something went south')
+			print(traceback.format_exc())
 
 		try:
 			server = smtplib.SMTP('localhost', 10026)
@@ -46,35 +48,35 @@ class CustomSMTPServer(smtpd.SMTPServer):
 			server.quit()
 #			print 'send successful'
 		except smtplib.SMTPException:
-			print 'Exception SMTPException'
+			print('Exception SMTPException')
 			pass
 		except smtplib.SMTPServerDisconnected:
-			print 'Exception SMTPServerDisconnected'
+			print('Exception SMTPServerDisconnected')
 			pass
 		except smtplib.SMTPResponseException:
-			print 'Exception SMTPResponseException'
+			print('Exception SMTPResponseException')
 			pass		
 		except smtplib.SMTPSenderRefused:
-			print 'Exception SMTPSenderRefused'
+			print('Exception SMTPSenderRefused')
 			pass		
 		except smtplib.SMTPRecipientsRefused:
-			print 'Exception SMTPRecipientsRefused'
+			print()'Exception SMTPRecipientsRefused')
 			pass		
 		except smtplib.SMTPDataError:
-			print 'Exception SMTPDataError'
+			print('Exception SMTPDataError')
 			pass		
 		except smtplib.SMTPConnectError:
-			print 'Exception SMTPConnectError'
+			print('Exception SMTPConnectError')
 			pass		
 		except smtplib.SMTPHeloError:
-			print 'Exception SMTPHeloError'
+			print('Exception SMTPHeloError')
 			pass		
 		except smtplib.SMTPAuthenticationError:
-			print 'Exception SMTPAuthenticationError'
+			print('Exception SMTPAuthenticationError')
 			pass
 		except:
-			print 'Undefined exception'
-			print traceback.format_exc()
+			print('Undefined exception')
+			print(traceback.format_exc())
 
 		return
 		
